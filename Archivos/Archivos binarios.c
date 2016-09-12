@@ -2,10 +2,10 @@
 #include<stdlib.h>
 
 typedef struct Estudiante{
-       char Cedula[10];
-       char Nombre[20];
-       char Apellido[20];
-       int Edad;       
+       char cedula[10];
+       char nombre[20];
+       char apellido[20];
+       int edad;       
 }ESTUDIANTE;
 
 void insertarDatos();
@@ -23,8 +23,8 @@ int main(){
          fflush(stdin); op = getchar();
          
          switch(op){
-             case '1': insertarDatos();break;                    
-             case '2': mostrarDatos();break;
+             case '1': insertarDatos(); break;                    
+             case '2': mostrarDatos(); break;
              case '3': op = 'Z'; break;
              default: printf("Opcion invalida"); fflush(stdin); getchar();
          }         
@@ -41,13 +41,13 @@ void insertarDatos(){
      archivo = fopen("datos.dat","ab"); // Si no existe el archivo lo crea
      if(archivo){
          printf("Cedula:   ");
-         fflush(stdin); scanf("%s",est.Cedula);
+         fflush(stdin); gets(est.cedula);
          printf("Nombre:   ");
-         fflush(stdin); scanf("%s",est.Nombre);
+         fflush(stdin); gets(est.nombre);
          printf("Apellido: ");
-         fflush(stdin); scanf("%s",est.Apellido);
+         fflush(stdin); gets(est.apellido);
          printf("Edad:     "); 
-         fflush(stdin); scanf("%i",&est.Edad);    
+         fflush(stdin); scanf("%i",&est.edad);    
           
          fwrite(&est,sizeof(ESTUDIANTE),1,archivo);
         
@@ -68,10 +68,10 @@ void mostrarDatos(){
         fread(&est,sizeof(ESTUDIANTE),1,archivo);        
         while(!feof(archivo)){
             printf("#:          %i\n",i+1);                  
-            printf("Cedula:     %s\n",est.Cedula);          
-            printf("Nombre:     %s\n",est.Nombre);
-            printf("Apellido:   %s\n",est.Apellido);        
-            printf("Edad:       %i\n\n",est.Edad);   
+            printf("Cedula:     %s\n",est.cedula);          
+            printf("Nombre:     %s\n",est.nombre);
+            printf("Apellido:   %s\n",est.apellido);        
+            printf("Edad:       %i\n\n",est.edad);   
             i++;      
             fread(&est,sizeof(ESTUDIANTE),1,archivo);
         }
