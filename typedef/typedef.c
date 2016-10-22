@@ -57,4 +57,3 @@ void modificarDatos(ESTUDIANTE *est){
     printf("Edad:        ");
     fflush(stdin); scanf("%i",&est->edad);
 }
-
